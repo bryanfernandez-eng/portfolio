@@ -1,1 +1,49 @@
 @import "tailwindcss";
+
+ @keyframes float3D {
+          0%,
+          100% {
+            transform: translateY(0px) translateZ(0px) rotateY(0deg);
+          }
+          50% {
+            transform: translateY(-20px) translateZ(30px) rotateY(180deg);
+          }
+        }
+        @keyframes gridPulse {
+          0% {
+            opacity: 0.1;
+            transform: scale(1) translateZ(0px);
+          }
+          100% {
+            opacity: 0.3;
+            transform: scale(1.05) translateZ(10px);
+          }
+        }
+        @keyframes hexSpin {
+          from {
+            transform: rotate(0deg) translateZ(0px);
+          }
+          to {
+            transform: rotate(360deg) translateZ(20px);
+          }
+        }
+        @keyframes circuitPulse {
+          0% {
+            opacity: 0.2;
+            stroke-width: 1px;
+          }
+          100% {
+            opacity: 0.6;
+            stroke-width: 2px;
+          }
+        }
+        @keyframes circuitNode {
+          0% {
+            opacity: 0.4;
+            r: 2;
+          }
+          100% {
+            opacity: 0.8;
+            r: 4;
+          }
+        }
