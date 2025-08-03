@@ -1,5 +1,5 @@
 import { CircuitPattern } from "../CircuitPattern";
-import { Card3D } from "../Card3D";
+// import { Card3D } from "../Card3D";
 import type { SectionVisibleProps } from "../../types/props";
 
 function Resume({ visibleSections }: SectionVisibleProps) {
