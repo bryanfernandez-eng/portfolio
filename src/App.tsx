@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Navbar  from "./components/NavBar";
+import Navbar  from "./components/shared/NavBar";
 // import Projects from "./components/sections/Projects";
 import Contact from "./components/sections/Contact";
 import Resume from "./components/sections/Resume";
@@ -32,7 +32,7 @@ function App() {
     <div className="min-h-screen bg-gray-950 overflow-x-hidden">
       <Navbar />
       <Home visibleSections={visibleSections} />
-      {/* <About visibleSections={visibleSections}></About> */}
+      {/* <About visibleSections={visibleSections}/> */}
       {/* <Projects visibleSections={visibleSections} /> */}
       <Contact visibleSections={visibleSections} />
       <Resume visibleSections={visibleSections} />

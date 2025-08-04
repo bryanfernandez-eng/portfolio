@@ -1,4 +1,4 @@
-export const WavePattern = () => {
+export default function WavePattern(){
   return (
     <div className="absolute inset-0 overflow-hidden opacity-30">
       <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">

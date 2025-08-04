@@ -1,4 +1,4 @@
-export const CircuitPattern = () => {
+export default function CircuitPattern(){
   return (
     <div className="absolute inset-0 opacity-10 sm:opacity-15">
       <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">

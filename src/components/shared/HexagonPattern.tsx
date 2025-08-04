@@ -1,4 +1,4 @@
-export const HexagonPattern = () => {
+export default function HexagonPattern (){
   return (
     <div className="absolute inset-0 overflow-hidden opacity-10 sm:opacity-20">
       {[...Array(12)].map((_, i) => (

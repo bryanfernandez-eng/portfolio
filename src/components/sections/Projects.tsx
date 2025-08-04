@@ -1,5 +1,5 @@
-import { HexagonPattern } from "../HexagonPattern";
-import { Card3D } from "../Card3D";
+import HexagonPattern from "../shared/HexagonPattern";
+import Card3D from "../shared/Card3D";
 import type { SectionVisibleProps } from "../../types/props";
 
 export default function Projects({ visibleSections }: SectionVisibleProps) {

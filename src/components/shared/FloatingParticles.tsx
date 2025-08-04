@@ -1,4 +1,4 @@
-export const FloatingParticles = () => {
+export default function FloatingParticles(){
   return (
     <div className="absolute inset-0 overflow-hidden">
       {[...Array(30)].map((_, i) => (

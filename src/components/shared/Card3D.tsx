@@ -1,7 +1,7 @@
 import { useState } from "react";
-import type { Card3DProps } from "../types/props";
+import type { Card3DProps } from "../../types/props";
 
-export const Card3D = ({ children, className = "", intensity = 1 }: Card3DProps) => {
+export default function Card3D ({ children, className = "", intensity = 1 }: Card3DProps){
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
 

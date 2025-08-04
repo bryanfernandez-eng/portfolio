@@ -1,6 +1,7 @@
-import { WavePattern } from "../WavePattern";
-import { Card3D } from "../Card3D";
+import WavePattern from "../shared/WavePattern";
+import Card3D from "../shared/Card3D";
 import type { SectionVisibleProps } from "../../types/props";
+import { contacts } from "../../constants/constants";
 
 export default function Contact({ visibleSections }: SectionVisibleProps) {
   return (
@@ -24,29 +25,7 @@ export default function Contact({ visibleSections }: SectionVisibleProps) {
           explore how we can bring your vision to life.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12">
-          {[
-            {
-              icon: "@",
-              title: "Email",
-              value: "b305ryan123@gmail.com",
-              color: "from-cyan-400 to-blue-600",
-              url: "mailto:b305ryan123@gmail.com",
-            },
-            {
-              icon: "in",
-              title: "LinkedIn",
-              value: "@bryanafernandez",
-              color: "from-purple-400 to-pink-600",
-              url: "https://www.linkedin.com/in/bryanafernandez/",
-            },
-            {
-              icon: "</>",
-              title: "GitHub",
-              value: "@bryanfernandez-eng",
-              color: "from-green-400 to-teal-600",
-              url: "https://github.com/bryanfernandez-eng",
-            },
-          ].map((contact, index) => (
+          {contacts.map((contact, index) => (
             <Card3D key={index} intensity={1.4}>
               <div
                 onClick={() => {
@@ -57,11 +36,9 @@ export default function Contact({ visibleSections }: SectionVisibleProps) {
                 className="cursor-pointer bg-gray-800/50 backdrop-blur-sm p-4 sm:p-6 rounded-lg h-full border border-gray-700/30 min-h-[140px] sm:min-h-[160px] flex flex-col justify-center"
               >
                 <div
-                  className={`w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r ${contact.color} rounded-lg flex items-center justify-center mx-auto mb-3 sm:mb-4`}
+                  className={`${contact.imageSize} rounded-lg flex items-center justify-center mx-auto`}
                 >
-                  <span className="text-white font-bold text-sm sm:text-base">
-                    {contact.icon}
-                  </span>
+                  <img src={contact.image} alt="" />
                 </div>
                 <h3 className="text-base sm:text-lg font-semibold text-white mb-2">
                   {contact.title}

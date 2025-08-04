@@ -1,4 +1,4 @@
-import { FloatingParticles } from '../FloatingParticles'
+import FloatingParticles from '../shared/FloatingParticles'
 import type { SectionVisibleProps } from '../../types/props'
 
 

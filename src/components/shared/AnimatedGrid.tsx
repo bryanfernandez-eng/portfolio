@@ -1,4 +1,4 @@
-export const AnimatedGrid = () => {
+export default function AnimatedGrid () {
   return (
     <div className="absolute inset-0 opacity-5 sm:opacity-10">
       <div className="grid grid-cols-8 sm:grid-cols-12 grid-rows-6 sm:grid-rows-8 h-full w-full">
