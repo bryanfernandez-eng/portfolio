@@ -50,7 +50,10 @@ export default function Contact({ visibleSections }: SectionVisibleProps) {
             </Card3D>
           ))}
         </div>
-        <button className="px-8 sm:px-12 py-3 sm:py-4 bg-gradient-to-r from-teal-500 to-cyan-600 text-white font-semibold rounded-lg transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-teal-500/25 text-sm sm:text-base">
+        <button
+          onClick={() => window.open("mailto:b305bryan123@gmail.com", "_blank")}
+          className="px-8 sm:px-12 py-3 sm:py-4 bg-gradient-to-r from-teal-500 to-cyan-600 text-white font-semibold rounded-lg transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-teal-500/25 text-sm sm:text-base"
+        >
           Start a Conversation
         </button>
       </div>

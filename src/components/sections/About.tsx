@@ -1,19 +1,21 @@
-import Card3D from '../shared/Card3D'
-import AnimatedGrid from '../shared/AnimatedGrid'
-import type { SectionVisibleProps } from '../../types/props'
+import Card3D from "../shared/Card3D";
+import PFP from "../../../public/PFP.jpg";
+import AnimatedGrid from "../shared/AnimatedGrid";
+import type { SectionVisibleProps } from "../../types/props";
 
 function About({ visibleSections }: SectionVisibleProps) {
   return (
     <section
       id="about"
-      className="relative min-h-screen py-12 sm:py-20 flex items-center justify-center bg-gradient-to-br from-gray-900 via-purple-950 to-gray-950"
+      className="relative min-h-screen py-14 sm:py-20 flex items-center justify-center bg-gradient-to-br from-gray-900 via-purple-950 to-gray-950"
     >
       <AnimatedGrid />
       <div
-        className={`max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 z-10 transition-all duration-1000 delay-200 ${visibleSections.has("about")
-          ? "opacity-100 translate-y-0"
-          : "opacity-0 translate-y-10"
-          }`}
+        className={`max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 z-10 transition-all duration-1000 delay-200 ${
+          visibleSections.has("about")
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-10"
+        }`}
       >
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-8 sm:mb-12 text-center">
           About Me
@@ -27,11 +29,11 @@ function About({ visibleSections }: SectionVisibleProps) {
             <div className="relative group w-full h-full">
               <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400 via-purple-500 to-blue-600 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-300 animate-pulse"></div>
               <div className="relative w-full h-full bg-gray-700 rounded-full overflow-hidden border-4 border-white/10 group-hover:border-white/20 transition-all duration-300">
-                <div className="w-full h-full bg-gradient-to-br from-gray-600 to-gray-800 flex items-center justify-center">
-                  <div className="text-center">
-                    <img src="https://media.licdn.com/dms/image/v2/D4D03AQGDcMhfYeki7Q/profile-displayphoto-shrink_200_200/B4DZXX7HdpHYAY-/0/1743084353688?e=1756944000&v=beta&t=HLUMODomyV9g5raIlr1oU3F7vxsYRm_LtL0LEvCgYvY" alt="" />
-                  </div>
-                </div>
+                <img
+                  src={PFP}
+                  alt="Bryan Alexander Fernandez Profile"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </Card3D>
@@ -40,10 +42,16 @@ function About({ visibleSections }: SectionVisibleProps) {
         <div className="grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
           <div>
             <p className="text-base sm:text-lg text-gray-300 mb-4 sm:mb-6 leading-relaxed">
-              Under construction...
+              I'm passionate about developing technology that makes a positive
+              impact and helps people solve real-world problems. As a Computer
+              Science student, I find fulfillment in creating solutions that can
+              improve lives and make a difference in communities.
             </p>
             <p className="text-base sm:text-lg text-gray-300 mb-4 sm:mb-6 leading-relaxed">
-              I am currently, developing this portfolio!
+              Currently focusing on full stack development while exploring the
+              exciting possibilities in AI and machine learning. I'm always
+              eager to learn new technologies and apply them to create
+              meaningful applications.
             </p>
             <div className="flex flex-wrap gap-2 sm:gap-3">
               {[
@@ -51,7 +59,12 @@ function About({ visibleSections }: SectionVisibleProps) {
                 "JavaScript",
                 "TypeScript",
                 "Node.js",
-                "Flask", "C", "C++", "Java", "Express.js", "Django.js",
+                "Flask",
+                "C",
+                "C++",
+                "Java",
+                "Express.js",
+                "Django",
                 "Python",
                 "AWS",
                 "Design",
@@ -69,20 +82,25 @@ function About({ visibleSections }: SectionVisibleProps) {
             <Card3D intensity={1.2}>
               <div className="bg-gray-800/50 p-4 sm:p-6 rounded-lg backdrop-blur-sm h-full border border-gray-700/30">
                 <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">
-                  Education: Student at FIU 
+                  Education
                 </h3>
                 <p className="text-sm sm:text-base text-gray-300">
-                  Currently pursuing a Bachelor's of Science on Computer Science and Minor on Mathematical Sciences at FIU.
+                  Pursuing a Bachelor of Science in Computer Science with a
+                  Minor in Mathematical Sciences at Florida International
+                  University. Expected graduation: December 2026.
                 </p>
               </div>
             </Card3D>
             <Card3D intensity={1.2}>
               <div className="bg-gray-800/50 p-4 sm:p-6 rounded-lg backdrop-blur-sm h-full border border-gray-700/30">
                 <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">
-                  Title
+                  Beyond Code
                 </h3>
                 <p className="text-sm sm:text-base text-gray-300">
-                  Desc
+                  When I'm not coding, you'll find me cheering for my favorite
+                  NBA and NFL teams, playing sports, catching the latest movies
+                  and TV shows, or attending live sporting events. I believe in
+                  maintaining a healthy work-life balance.
                 </p>
               </div>
             </Card3D>
@@ -90,7 +108,7 @@ function About({ visibleSections }: SectionVisibleProps) {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default About
+export default About;

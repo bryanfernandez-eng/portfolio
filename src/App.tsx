@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import Navbar  from "./components/shared/NavBar";
-// import Projects from "./components/sections/Projects";
+import Projects from "./components/sections/Projects";
 import Contact from "./components/sections/Contact";
 import Resume from "./components/sections/Resume";
 import Home from "./components/sections/Home";
-// import About from "./components/sections/About";
+import About from "./components/sections/About";
 import "./index.css"
 
 function App() {
@@ -32,8 +32,8 @@ function App() {
     <div className="min-h-screen bg-gray-950 overflow-x-hidden">
       <Navbar />
       <Home visibleSections={visibleSections} />
-      {/* <About visibleSections={visibleSections}/> */}
-      {/* <Projects visibleSections={visibleSections} /> */}
+      <About visibleSections={visibleSections}/>
+      <Projects visibleSections={visibleSections} />
       <Contact visibleSections={visibleSections} />
       <Resume visibleSections={visibleSections} />
     </div>
