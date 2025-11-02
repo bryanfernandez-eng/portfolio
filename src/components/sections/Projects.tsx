@@ -1,98 +1,81 @@
-import HexagonPattern from "../shared/HexagonPattern";
-import Card3D from "../shared/Card3D";
-import type { SectionVisibleProps } from "../../types/props";
-import { projects } from "../../constants/constants";
+import { projects as legacyProjects, featuredProjects } from "../../constants/constants";
 
-export default function Projects({ visibleSections }: SectionVisibleProps) {
+export default function Projects() {
+  const allProjects = [...featuredProjects, ...legacyProjects];
+  const hero = allProjects[0];
+  const rest = allProjects.slice(1);
   return (
-    <section
-      id="projects"
-      className="relative min-h-screen py-12 sm:py-20 bg-gradient-to-br from-gray-950 via-indigo-950 to-gray-950"
-    >
-      <HexagonPattern />
-      <div
-        className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 relative transition-all duration-1000 delay-300 ${
-          visibleSections.has("projects")
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 translate-y-10"
-        }`}
-      >
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 sm:mb-8 text-center">
-          Featured Projects
-        </h2>
-        <p className="text-gray-300 text-center mb-10 sm:mb-16 max-w-2xl mx-auto">
-          A showcase of my passion for creating technology that makes a positive impact and solves real-world problems.
+    <section id="projects" className="py-24">
+      <div className="max-w-6xl mx-auto px-4">
+        <h2 className="h2-retro scan-in text-2xl md:text-3xl text-center text-[var(--accent)] mb-8">Projects</h2>
+        <p className="text-[var(--text)] text-center mb-12 max-w-2xl mx-auto font-mono">
+          A selection of shipped work and experiments.
         </p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
-          {projects.map((project, index) => (
-            <Card3D key={index} intensity={1.3} className="h-full">
-              <div className="h-full bg-gray-800/50 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300 min-h-[320px] sm:min-h-[360px] flex flex-col group">
-                <div
-                  className={`h-2 w-full bg-gradient-to-r ${project.color} rounded-full mb-4 flex-shrink-0`}
-                ></div>
-                
-                <div className="flex justify-between items-start mb-3">
-                  <h3 className="text-lg sm:text-xl font-semibold text-white group-hover:text-cyan-300 transition-colors flex-shrink-0">
-                    {project.title}
-                  </h3>
-                  <div className="flex gap-2 ml-2">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-400 hover:text-white transition-colors"
-                      aria-label="View GitHub repository"
-                    >
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                      </svg>
-                    </a>
-                    {project.demo && (
-                      <a
-                        href={project.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-gray-400 hover:text-white transition-colors"
-                        aria-label="View live demo"
-                      >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                        </svg>
-                      </a>
-                    )}
-                  </div>
-                </div>
 
-                <p className="text-xs text-gray-400 mb-3 flex-shrink-0">
-                  {project.period}
-                </p>
-                
-                <p className="text-gray-300 mb-4 text-sm sm:text-base leading-relaxed flex-grow">
-                  {project.desc}
-                </p>
-                
-                <div className="flex flex-wrap gap-2 flex-shrink-0">
+        {/* Hero project */}
+        {hero && (
+          <div className="window mb-10">
+            <div className="window-header px-4 py-2 flex justify-between items-center">
+              <h3 className="text-lg md:text-xl font-mono text-[var(--text)]">{hero.title}</h3>
+              <div className="flex gap-2">
+                <a href={hero.github} target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] hover:opacity-80">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                {hero.demo && (
+                  <a href={hero.demo} target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] hover:opacity-80">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                  </a>
+                )}
+              </div>
+            </div>
+            <div className="p-6">
+              <p className="text-xs text-[var(--text)] mb-3 font-mono">{hero.period}</p>
+              <p className="text-[var(--text)] mb-4 leading-relaxed font-mono">{hero.desc}</p>
+              <div className="flex flex-wrap gap-2">
+                {hero.tech.map((t: string) => (
+                  <span key={t} className="px-2 py-1 border border-green-700 text-[var(--text)] text-xs font-mono">{t}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Remaining projects */}
+        <div className="grid md:grid-cols-2 gap-8">
+          {rest.map((project, index) => (
+            <div key={index} className="window p-0">
+              <div className="window-header px-4 py-2 flex justify-between items-center">
+                <h3 className="text-base md:text-lg font-mono text-[var(--text)]">{project.title}</h3>
+                <div className="flex gap-2">
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] hover:opacity-80">
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                  </a>
+                  {project.demo && (
+                    <a href={project.demo} target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] hover:opacity-80">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                    </a>
+                  )}
+                </div>
+              </div>
+              <div className="p-6">
+                <p className="text-xs text-[var(--text)] mb-3 font-mono">{project.period}</p>
+                <p className="text-[var(--text)] mb-4 leading-relaxed font-mono">{project.desc}</p>
+                <div className="flex flex-wrap gap-2">
                   {project.tech.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2 sm:px-3 py-1 bg-gray-700 text-gray-300 rounded-full text-xs hover:bg-gray-600 transition-colors"
-                    >
-                      {tech}
-                    </span>
+                    <span key={tech} className="px-2 py-1 border border-green-700 text-[var(--text)] text-xs font-mono">{tech}</span>
                   ))}
                 </div>
               </div>
-            </Card3D>
+            </div>
           ))}
         </div>
 
-        <div className="text-center mt-12 sm:mt-16">
+        <div className="text-center mt-16">
           <a
             href="https://github.com/bryanfernandez-eng"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-gray-700 to-gray-800 text-white font-semibold rounded-lg transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-gray-500/25 text-sm sm:text-base"
+            className="inline-flex items-center gap-2 px-8 py-3 btn-retro btn-retro--solid"
           >
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
@@ -104,3 +87,4 @@ export default function Projects({ visibleSections }: SectionVisibleProps) {
     </section>
   );
 }
+

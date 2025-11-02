@@ -1,54 +1,56 @@
-import FloatingParticles from '../shared/FloatingParticles'
-import type { SectionVisibleProps } from '../../types/props'
-
-
-function Home({visibleSections}: SectionVisibleProps) {
+function Home() {
   return (
-      <section id="home" className="relative h-screen flex items-center justify-center bg-gradient-to-br from-gray-950 via-gray-900 to-blue-950">
-        <FloatingParticles />
-        <div className={`text-center z-10 px-4 sm:px-6 transition-all duration-1000 ${
-          visibleSections.has('home') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`}>
-          <div className="mb-4 sm:mb-6">
-            <p className="text-lg sm:text-xl text-cyan-400 font-medium mb-2">
-              Hi, I'm
-            </p>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text ">
-              Bryan Alexander Fernandez
-            </h1>
-          </div>
-          
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-white mb-4 sm:mb-6">
-            Full Stack Developer & CS Student
-          </h2>
-          
-          <p className="text-lg sm:text-xl text-gray-300 mb-6 sm:mb-8 max-w-3xl mx-auto px-4 leading-relaxed">
-            Passionate about creating technology that makes a positive impact. Currently studying Computer Science at FIU while building full stack applications and exploring the exciting world of AI & Machine Learning.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button 
-              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-lg transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-cyan-500/25 text-sm sm:text-base"
-            >
-              Explore My Work
-            </button>
-            <button 
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-cyan-500 text-cyan-400 font-semibold rounded-lg transform hover:scale-105 transition-all duration-300 hover:bg-cyan-500/10 text-sm sm:text-base"
-            >
-              Get In Touch
-            </button>
-          </div>
-          
-          <div className="mt-8 sm:mt-12">
-            <p className="text-sm text-gray-400 mb-4">
-              Currently interning at Feam Aero • Graduating December 2026
-            </p>
-          </div>
+    <section id="home" className="py-24">
+      <div className="max-w-5xl mx-auto px-4 text-center">
+        <h1 className="h1-retro text-3xl md:text-5xl text-[var(--text)] mb-6">
+          Bryan Alexander Fernandez
+        </h1>
+        
+        <h2 className="text-base md:text-lg text-[var(--text)] mb-3 font-mono">
+          Full Stack Developer & CS Student
+        </h2>
+        <div className="text-xs md:text-sm text-[var(--text)] mb-10 font-mono flex flex-wrap items-center justify-center gap-3">
+          <a href="mailto:b305ryan123@gmail.com" className="hover:text-[var(--accent)]">b305ryan123@gmail.com</a>
+          <span className="text-[var(--accent)]">|</span>
+          <a href="https://linkedin.com/in/bryanafernandez" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--accent)] break-all max-w-full min-w-0">linkedin.com/in/bryanafernandez</a>
+          <span className="text-[var(--accent)]">|</span>
+          <a href="https://github.com/bryanfernandez-eng" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--accent)] break-all max-w-full min-w-0">github.com/bryanfernandez-eng</a>
         </div>
-      </section>
-  )
+        
+        <p className="text-sm md:text-base text-[var(--text)] mb-8 max-w-3xl mx-auto leading-relaxed">
+          Passionate about creating technology that makes a positive impact. Currently studying Computer Science at FIU while building full stack applications and exploring the exciting world of AI & Machine Learning.
+        </p>
+        
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <button 
+            onClick={() => document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })}
+            className="btn-retro btn-retro--solid"
+          >
+            View My Work
+          </button>
+          <button 
+            onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+            className="btn-retro"
+          >
+            Get In Touch
+          </button>
+        </div>
+        
+        <div className="mt-12">
+          <p className="text-xs text-[var(--text)] font-mono">
+            Currently interning at Feam Aero -- Graduating December 2026
+          </p>
+        </div>
+      </div>
+    </section>
+  );
 }
 
-export default Home
+export default Home;
+
+
+
+
+
+
+

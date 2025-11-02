@@ -1,109 +1,76 @@
-import Card3D from "../shared/Card3D";
-import PFP from "../../../public/PFP.jpg";
-import AnimatedGrid from "../shared/AnimatedGrid";
-import type { SectionVisibleProps } from "../../types/props";
-
-function About({ visibleSections }: SectionVisibleProps) {
+function About() {
   return (
-    <section
-      id="about"
-      className="relative min-h-screen py-14 sm:py-20 flex items-center justify-center bg-gradient-to-br from-gray-900 via-purple-950 to-gray-950"
-    >
-      <AnimatedGrid />
-      <div
-        className={`max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 z-10 transition-all duration-1000 delay-200 ${
-          visibleSections.has("about")
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 translate-y-10"
-        }`}
-      >
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-8 sm:mb-12 text-center">
-          About Me
-        </h2>
+    <section id="about" className="py-24">
+      <div className="max-w-6xl mx-auto px-4">
+        <h2 className="h2-retro scan-in text-2xl md:text-3xl text-[var(--accent)] mb-12 text-center">About Me</h2>
 
-        <div className="flex justify-center mb-8 sm:mb-12">
-          <Card3D
-            className="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48"
-            intensity={1.5}
-          >
-            <div className="relative group w-full h-full">
-              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400 via-purple-500 to-blue-600 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-300 animate-pulse"></div>
-              <div className="relative w-full h-full bg-gray-700 rounded-full overflow-hidden border-4 border-white/10 group-hover:border-white/20 transition-all duration-300">
-                <img
-                  src={PFP}
-                  alt="Bryan Alexander Fernandez Profile"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-          </Card3D>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
-          <div>
-            <p className="text-base sm:text-lg text-gray-300 mb-4 sm:mb-6 leading-relaxed">
-              I'm passionate about developing technology that makes a positive
-              impact and helps people solve real-world problems. As a Computer
-              Science student, I find fulfillment in creating solutions that can
-              improve lives and make a difference in communities.
-            </p>
-            <p className="text-base sm:text-lg text-gray-300 mb-4 sm:mb-6 leading-relaxed">
-              Currently focusing on full stack development while exploring the
-              exciting possibilities in AI and machine learning. I'm always
-              eager to learn new technologies and apply them to create
-              meaningful applications.
-            </p>
-            <div className="flex flex-wrap gap-2 sm:gap-3">
-              {[
-                "React",
-                "JavaScript",
-                "TypeScript",
-                "Node.js",
-                "Flask",
-                "C",
-                "C++",
-                "Java",
-                "Express.js",
-                "Django",
-                "Python",
-                "AWS",
-                "Design",
-              ].map((skill) => (
-                <span
-                  key={skill}
-                  className="px-3 sm:px-4 py-1 sm:py-2 bg-cyan-500/20 text-cyan-300 rounded-full text-xs sm:text-sm font-medium"
-                >
-                  {skill}
-                </span>
-              ))}
+        <div className="grid md:grid-cols-3 gap-12 items-start">
+          {/* Portrait column */}
+          <div className="space-y-6 md:sticky md:top-24 self-start">
+            <div className="window p-6 text-center">
+              <img
+                src="/PFP.jpg"
+                alt="Bryan Alexander Fernandez portrait"
+                className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover mx-auto border border-green-700"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
           </div>
-          <div className="space-y-4 sm:space-y-6">
-            <Card3D intensity={1.2}>
-              <div className="bg-gray-800/50 p-4 sm:p-6 rounded-lg backdrop-blur-sm h-full border border-gray-700/30">
-                <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">
-                  Education
-                </h3>
-                <p className="text-sm sm:text-base text-gray-300">
-                  Pursuing a Bachelor of Science in Computer Science with a
-                  Minor in Mathematical Sciences at Florida International
-                  University. Expected graduation: December 2026.
-                </p>
+
+          {/* Content column */}
+          <div className="space-y-6 md:col-span-2">
+            <p className="text-sm md:text-base text-[var(--text)] leading-relaxed font-mono">
+              I build pragmatic, fast full-stack software with a soft spot for clean
+              developer experience and performance. Recent work spans React/TypeScript
+              UIs, Python backends (Flask/FastAPI), and shipping production features
+              that actually move the needle for users.
+            </p>
+
+            <div className="window p-6">
+              <h3 className="text-sm font-semibold text-[var(--text)] mb-3 font-mono">Now</h3>
+              <ul className="text-[var(--text)] font-mono text-sm space-y-2 list-disc list-inside">
+                <li>Shipping FEAM platform features (React + Flask)</li>
+                <li>Iterating AI-assisted flows and internal tooling</li>
+                <li>Polishing developer experience and component systems</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-base font-semibold text-[var(--text)] mb-3 font-mono">Skills</h3>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  "React","TypeScript","JavaScript","Node.js","Flask","FastAPI",
+                  "Python","Django","PostgreSQL","MongoDB","AWS","Git"
+                ].map((skill) => (
+                  <span key={skill} className="px-2 py-1 border border-green-700 text-[var(--text)] text-xs font-mono">
+                    {skill}
+                  </span>
+                ))}
               </div>
-            </Card3D>
-            <Card3D intensity={1.2}>
-              <div className="bg-gray-800/50 p-4 sm:p-6 rounded-lg backdrop-blur-sm h-full border border-gray-700/30">
-                <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">
-                  Beyond Code
-                </h3>
-                <p className="text-sm sm:text-base text-gray-300">
-                  When I'm not coding, you'll find me cheering for my favorite
-                  NBA and NFL teams, playing sports, catching the latest movies
-                  and TV shows, or attending live sporting events. I believe in
-                  maintaining a healthy work-life balance.
-                </p>
+            </div>
+
+
+            <div className="window p-6">
+              <h3 className="text-sm font-semibold text-[var(--text)] mb-2 font-mono">Focus Areas</h3>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  "Full-stack Web","Machine Learning","Artifial Intellegence", "APIs & Data","Database Management"
+                ].map((tag) => (
+                  <span key={tag} className="px-2 py-1 border border-green-700 text-[var(--text)] text-xs font-mono">
+                    {tag}
+                  </span>
+                ))}
               </div>
-            </Card3D>
+            </div>
+
+            <div className="window p-6">
+              <h3 className="text-sm font-semibold text-[var(--text)] mb-2 font-mono">Beyond Code</h3>
+              <p className="text-[var(--text)] font-mono text-sm">
+                Sports, film, and live events keep me energized. I like building things
+                that make teams faster and users happier.
+              </p>
+            </div>
           </div>
         </div>
       </div>

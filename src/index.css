@@ -1,88 +1,157 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
 
- @keyframes float3D {
-          0%,
-          100% {
-            transform: translateY(0px) translateZ(0px) rotateY(0deg);
-          }
-          50% {
-            transform: translateY(-20px) translateZ(30px) rotateY(180deg);
-          }
-        }
-        @keyframes gridPulse {
-          0% {
-            opacity: 0.1;
-            transform: scale(1) translateZ(0px);
-          }
-          100% {
-            opacity: 0.3;
-            transform: scale(1.05) translateZ(10px);
-          }
-        }
-        @keyframes hexSpin {
-          from {
-            transform: rotate(0deg) translateZ(0px);
-          }
-          to {
-            transform: rotate(360deg) translateZ(20px);
-          }
-        }
-        @keyframes circuitPulse {
-          0% {
-            opacity: 0.2;
-            stroke-width: 1px;
-          }
-          100% {
-            opacity: 0.6;
-            stroke-width: 2px;
-          }
-        }
-        @keyframes circuitNode {
-          0% {
-            opacity: 0.4;
-            r: 2;
-          }
-          100% {
-            opacity: 0.8;
-            r: 4;
-          }
-        }
+/* Retro terminal theme (responsive, darker variant) */
+:root {
+  color-scheme: dark;
+  --bg: #050607;
+  --panel: #0a0d0a;
+  --grid: rgba(22, 163, 74, 0.06); /* green-600 at low alpha */
+  --scan: rgba(255, 255, 255, 0.02);
+  --accent: #16a34a; /* green-600 (darker than neon) */
+  --accent-700: #15803d; /* green-700 */
+  --text: #c7d1c7; /* soft-gray greenish */
+  --nav-h: 64px;   /* matches navbar h-16 */
+  --ctrl-h: 64px;  /* bottom control bar height */
+}
+html, body, #root { height: 100%; }
+html { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: 80px; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent); }
+a:hover { border-bottom-style: solid; }
+button { outline: none; }
 
+/* Viewport layout helpers */
+.viewport-main { min-height: calc(100vh - var(--ctrl-h)); padding-top: var(--nav-h); }
+.pane { height: calc(100vh - var(--nav-h) - var(--ctrl-h)); display: flex; align-items: center; overflow-y: auto; }
+.pane > .pane-inner { width: 100%; }
 
-/* Hide scrollbar but keep functionality */
-* {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
+/* Retro background grid + CRT scanlines */
+.retro-bg {
+  background-image:
+    radial-gradient(80vw 50vh at 50% -10%, rgba(22,163,74,0.04), transparent 65%),
+    repeating-linear-gradient(180deg, transparent 0 2px, var(--grid) 2px 3px);
+}
+.crt {
+  position: relative;
+}
+.crt::after {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(to bottom, rgba(0,0,0,0) 0 2px, var(--scan) 2px 3px);
+  opacity: 0.6; /* remove blend-mode (expensive) */
 }
 
-*::-webkit-scrollbar {
-  width: 0px;
-  background: transparent; /* Chrome/Safari/Webkit */
+/* Window + header bars */
+.window {
+  background: var(--panel);
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 0 1px rgba(22,163,74,0.18) inset, 0 0 6px rgba(22,163,74,0.05);
+}
+.window-header {
+  border-bottom: 2px solid var(--accent);
+  background: linear-gradient(90deg, rgba(22,163,74,0.12), rgba(22,163,74,0.04));
 }
 
-/* Smooth scrolling for the entire page */
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 80px; /* Account for navbar */
+/* Buttons */
+.btn-retro {
+  border: 2px solid var(--accent);
+  color: var(--text);
+  background: #0c0f0c;
+  padding: 0.7rem 1.1rem;
+  letter-spacing: 0.06em;
+  font-family: 'Press Start 2P', system-ui, monospace;
+}
+.btn-retro:hover {
+  background: #0f1a12;
+}
+.btn-retro--solid {
+  background: #0f1a12;
+  color: var(--text);
+}
+.btn-retro--solid:hover {
+  background: #122016;
 }
 
-/* Enhanced smooth scrolling with custom easing */
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
+/* Headings */
+.h1-retro, .h2-retro {
+  font-family: 'Press Start 2P', system-ui, monospace;
+  text-shadow: 0 0 2px rgba(22,163,74,0.5);
+}
+.h1-retro { letter-spacing: 0.04em; }
+
+@keyframes retro-flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: 0.85; }
+}
+.flicker { animation: retro-flicker 6s infinite; opacity: 0.98; }
+
+/* Performance: reduce heavy effects on smaller screens and reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .flicker { animation: none; }
+  .crt::after { display: none; }
 }
 
-
-section[id] {
-  scroll-margin-top: -50px; /* Adjust this value based on your navbar height */
+@media (max-width: 768px) {
+  .crt::after { display: none; }
+  .retro-bg { background-image: none; }
 }
 
-/* Alternative approach - if the above doesn't work, try this instead */
-section[id]::before {
-  content: '';
-  display: block;
-  height: -50px; /* Same as navbar height */
-  margin-top: 30px;
-  visibility: hidden;
+/* Scan-in title animation */
+.scan-in { opacity: 0; animation: scanIn 700ms ease-out forwards; }
+@keyframes scanIn {
+  from { opacity: 0; transform: translateY(8px); filter: blur(2px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+/* Loader overlay */
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loader-box {
+  background: var(--panel);
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 0 1px rgba(22,163,74,0.2) inset, 0 0 12px rgba(22,163,74,0.08);
+  padding: 1.25rem 1.5rem;
+  width: min(520px, 86vw);
+}
+.loader-title {
+  font-family: 'Press Start 2P', system-ui, monospace;
+  color: var(--text);
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+.loader-bar {
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  position: relative;
+  overflow: hidden;
+}
+.loader-bar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  width: 20%;
+  animation: loadBar 1.2s infinite ease-in-out;
+}
+@keyframes loadBar {
+  0% { left: -10%; width: 20%; }
+  50% { left: 45%; width: 35%; }
+  100% { left: 100%; width: 20%; }
 }
