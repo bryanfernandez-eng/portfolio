@@ -41,6 +41,7 @@ export const projects = [
     github: "https://github.com/bryanfernandez-eng",
     demo: null,
     period: "January 2025 - April 2025",
+    image: "/projects/archieTechAI.png",
   },
   {
     title: "Product Store",
@@ -58,6 +59,7 @@ export const projects = [
     github: "https://github.com/bryanfernandez-eng",
     demo: null,
     period: "January 2025 - February 2025",
+    image: "/projects/archieTechAI.png",
   },
   {
     title: "GatherU Platform",
@@ -68,6 +70,7 @@ export const projects = [
     github: "https://github.com/bryanfernandez-eng",
     demo: null,
     period: "January 2025 - April 2025",
+    image: "/projects/archieTechAI.png",
   },
 ];
 
@@ -82,6 +85,7 @@ export const featuredProjects = [
     github: "https://github.com/bryanfernandez-eng",
     demo: null,
     period: "September 2025",
+    image: "/projects/archieTechAI.png",
   },
   {
     title: "GatherU",
@@ -92,6 +96,7 @@ export const featuredProjects = [
     github: "https://github.com/bryanfernandez-eng",
     demo: null,
     period: "January 2025 - April 2025",
+    image: "/projects/archieTechAI.png",
   },
   {
     title: "CashCore",
@@ -102,6 +107,7 @@ export const featuredProjects = [
     github: "https://github.com/bryanfernandez-eng",
     demo: null,
     period: "September 2024 - December 2024",
+    image: "/projects/archieTechAI.png",
   },
 ];
 

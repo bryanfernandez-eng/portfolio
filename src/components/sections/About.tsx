@@ -10,7 +10,7 @@ function About() {
             <div className="window p-6 text-center">
               <img
                 src="/PFP.jpg"
-                alt="Bryan Alexander Fernandez portrait"
+                alt="Bryan Fernandez portrait"
                 className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover mx-auto border border-green-700"
                 loading="lazy"
                 decoding="async"

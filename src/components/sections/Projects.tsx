@@ -14,7 +14,7 @@ export default function Projects() {
 
         {/* Hero project */}
         {hero && (
-          <div className="window mb-10">
+          <div className="window mb-10 overflow-hidden">
             <div className="window-header px-4 py-2 flex justify-between items-center">
               <h3 className="text-lg md:text-xl font-mono text-[var(--text)]">{hero.title}</h3>
               <div className="flex gap-2">
@@ -28,6 +28,16 @@ export default function Projects() {
                 )}
               </div>
             </div>
+            {hero.image && (
+              <div className="w-full h-64 md:h-80 overflow-hidden bg-[var(--panel)]">
+                <img
+                  src={hero.image}
+                  alt={hero.title}
+                  className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-300"
+                  loading="lazy"
+                />
+              </div>
+            )}
             <div className="p-6">
               <p className="text-xs text-[var(--text)] mb-3 font-mono">{hero.period}</p>
               <p className="text-[var(--text)] mb-4 leading-relaxed font-mono">{hero.desc}</p>
@@ -43,7 +53,7 @@ export default function Projects() {
         {/* Remaining projects */}
         <div className="grid md:grid-cols-2 gap-8">
           {rest.map((project, index) => (
-            <div key={index} className="window p-0">
+            <div key={index} className="window p-0 overflow-hidden group hover:shadow-lg hover:shadow-green-900/20 transition-all duration-300">
               <div className="window-header px-4 py-2 flex justify-between items-center">
                 <h3 className="text-base md:text-lg font-mono text-[var(--text)]">{project.title}</h3>
                 <div className="flex gap-2">
@@ -57,6 +67,17 @@ export default function Projects() {
                   )}
                 </div>
               </div>
+              {project.image && (
+                <div className="w-full h-48 overflow-hidden bg-[var(--panel)] relative">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--panel)] to-transparent opacity-50"></div>
+                </div>
+              )}
               <div className="p-6">
                 <p className="text-xs text-[var(--text)] mb-3 font-mono">{project.period}</p>
                 <p className="text-[var(--text)] mb-4 leading-relaxed font-mono">{project.desc}</p>
